@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+</head>
+<body>
+    <center><h2>Welcome in Talk-Talk</h2></center><br>
+    <h3>Your address book:</h3>
+    {% for person in persons %}
+    <a href="{% url 'show_person' person.id %}">{{ person.name }} {{ person.surname }}</a>&emsp;&emsp;
+    <a href="{% url 'delete_person' person.id %}">Delete</a> /
+    <a href="{% url 'edit_person' person.id %}">Edit</a> <br>
+    {% endfor %}
+
+    <form method="GET" action="{% url 'add_person' %}">
+        <br><br><input type="submit" value="Add person" />
+    </form>
+    <form method="GET" action="{% url 'create_group' %}">
+        <input type="submit" value="Create group" />
+    </form>
+    <form method="GET" action="{% url 'show_all_groups' %}">
+        <input type="submit" value="Show all groups" />
+    </form>
+
+
+</body>
+</html>

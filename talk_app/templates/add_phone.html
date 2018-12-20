@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add phone</title>
+</head>
+<body>
+
+    <center><h2>Add phone number for {{ person.name }} {{ person.surname }}</h2></center><br>
+
+    <form method="POST">
+        {% csrf_token %}
+        <label>Phone number</label>
+        <input type="number" name="number" step="1" /><br>
+        <label>Phone type</label>
+        <input type="text" name="type" /><br><br>
+        <input type="submit" value="Send" />
+    </form>
+
+</body>
+</html>

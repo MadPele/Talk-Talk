@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show all groups</title>
+</head>
+<body>
+<center><h2>Group list:</h2></center>
+    {% for group in groups %}
+    <a href="{% url 'show_group' group.id %}">{{ group.name }}</a><br>
+    {% endfor %}
+    <form method="GET" action="{% url 'home' %}">
+        <br><br><input type="submit" value="Home" />
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add address</title>
+</head>
+<body>
+
+    <center><h2>Add address for {{ person.name }} {{ person.surname }}</h2></center><br>
+
+    <form method="POST">
+        {% csrf_token %}
+        <label>City</label>
+        <input type="text" name="city" /><br>
+        <label>Street</label>
+        <input type="text" name="street" /><br>
+        <label>House number</label>
+        <input type="number" step="1" name="house" /><br>
+        <label>Apartment</label>
+        <input type="number" step="1" name="apartment" /><br><br>
+        <input type="submit" value="Send" />
+    </form>
+
+</body>
+</html>

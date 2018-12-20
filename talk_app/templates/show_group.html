@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show group</title>
+</head>
+<body>
+    <center><h2>Group: {{ group.name }}</h2></center><br>
+    <form method="GET" action="{% url 'show_group' group.id %}">
+        Look for person
+        <input type="text" name="search" />
+        <input type="submit" value="Search" />
+        &emsp;<a href="{% url 'show_group' group.id %}">Show all</a>
+    </form>
+    {% if members %}
+        <h3>&emsp;Members:</h3>
+    {% endif %}
+    {% for member in members %}
+        {{ member.name }} {{ member.surname }} &emsp; <a href="{% url 'delete_member' group.id member.id %}">Remove</a><br>
+    {% endfor %}
+    <form method="POST">
+        {% csrf_token %}
+        <br><br>Add member
+        <select name="person">
+            {% for person in persons %}
+                {% if not person.id in members %}
+                <option value="{{ person.id }}">{{ person.name }} {{ person.surname }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        &emsp;<input type="submit" value="Add" />
+    </form>
+
+    <form method="GET" action="{% url 'home' %}">
+        <br><input type="submit" value="Home" />
+    </form>
+    <form method="GET" action="{% url 'show_all_groups' %}">
+        <input type="submit" value="Show all groups" />
+    </form>
+</body>
+</html>

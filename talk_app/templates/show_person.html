@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Person details</title>
+</head>
+<body>
+    <center><h3>Person details</h3></center>
+    Name: {{ person.name }}<br>
+    Surname: {{ person.surname }}<br>
+    {% if person.address %}
+        Address: {{ person.address }}<br>
+    {% endif %}
+    {% if phones %}
+        {% for phone in phones %}
+            {{ phone.type }} phone: {{ phone.number }}<br>
+        {% endfor %}
+    {% endif %}
+    {% if emails %}
+        {% for email in emails %}
+            {{ email.type }} email: {{ email.email }}<br>
+        {% endfor %}
+    {% endif %}
+    Description {{ person.description }}<br>
+    <br><a href="{% url 'edit_person' person.id %}">Edit data</a><br>
+    <form method="GET" action="{% url 'home' %}">
+        <br><br><input type="submit" value="Home" />
+    </form>
+</body>
+</html>
